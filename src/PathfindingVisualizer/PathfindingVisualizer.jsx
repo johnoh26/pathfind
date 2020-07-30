@@ -326,7 +326,7 @@ export default class PathfindingVisualizer extends Component {
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
       <li className="nav-item">
-        <a className="nav-link" href="/"> Go To Sorting Visualizer </a>
+        <a className="nav-link" href="https://johnoh26.github.io/sorting/"> Go To Sorting Visualizer </a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="https://www.john-oh.com">Check Out Other Cool Projects</a>
