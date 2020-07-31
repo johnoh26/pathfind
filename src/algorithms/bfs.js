@@ -2,13 +2,17 @@
 // Make nodes point back to their previous node so that we can compute the shortest path
 // by backtracking from the finish node.
 
-export function bfs(grid, startNode, finishNode, visitedNodesInOrder = []) {
-  const nextNodesStack = [startNode];
+export function bfs(grid, startNode, finishNode) {
+  const visitedNodesInOrder = [];
+  let nextNodesStack = [startNode];
   while (nextNodesStack.length) {
     const currentNode = nextNodesStack.shift();
     if (currentNode === finishNode) return visitedNodesInOrder;
 
-    if (!currentNode.isWall && !currentNode.isVisited) {
+    if (
+      !currentNode.isWall &&
+      (currentNode.isStart || !currentNode.isVisited)
+    ) {
       currentNode.isVisited = true;
       visitedNodesInOrder.push(currentNode);
       const {col, row} = currentNode;
@@ -43,4 +47,5 @@ export function bfs(grid, startNode, finishNode, visitedNodesInOrder = []) {
       }
     }
   }
+  // return visitedNodesInOrder;
 }

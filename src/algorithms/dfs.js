@@ -2,13 +2,24 @@
 // Make nodes point back to their previous node so that we can compute the shortest path
 // by backtracking from the finish node.
 
-export function dfs(grid, startNode, finishNode, visitedNodesInOrder = []) {
-  const nextNodesStack = [startNode];
+export function dfs(grid, startNode, finishNode) {
+  const visitedNodesInOrder = [];
+  const nextNodesStack = [];
+  nextNodesStack.push(startNode);
+  console.log('DFS >>> nextNodesStack', nextNodesStack);
   while (nextNodesStack.length) {
     const currentNode = nextNodesStack.pop();
-    if (currentNode === finishNode) return visitedNodesInOrder;
+    console.log('DFS >>> currentNode', currentNode);
 
-    if (!currentNode.isWall && !currentNode.isVisited) {
+    if (currentNode === finishNode) {
+      console.log('DFS >>> in the if');
+      return visitedNodesInOrder;
+    }
+
+    if (
+      !currentNode.isWall &&
+      (currentNode.isStart || !currentNode.isVisited)
+    ) {
       currentNode.isVisited = true;
       visitedNodesInOrder.push(currentNode);
 
