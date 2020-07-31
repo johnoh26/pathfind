@@ -161,25 +161,29 @@ export default class PathfindingVisualizer extends Component {
             document.getElementById(`node-${row}-${col}`).className =
             'node node-start';
           }
+          this.setState({START_NODE_ROW:row, START_NODE_COL: col})
         } else if(this.state.isFinishNode) {
           if(nodeClassName !== 'node node-wall') {
             const prevFinishNode = this.state.grid[this.state.currRow][this.state.currCol]
             prevFinishNode.isFinish = false
-          document.getElementById(`node-${this.state.currRow}-${this.state.currCol}`).className =
-        'node';
+            document.getElementById(`node-${this.state.currRow}-${this.state.currCol}`).className = 'node';
 
-          this.setState({currRow: row, currCol: col})
-          const currFinishNode = this.state.grid[row][col]
+            this.setState({currRow: row, currCol: col})
+            const currFinishNode = this.state.grid[row][col]
             currFinishNode.isFinish = true
-          document.getElementById(`node-${row}-${col}`).className =
-        'node node-finish';
-        }
-      }
-      else {
+            document.getElementById(`node-${row}-${col}`).className = 'node node-finish';
+          }
+          this.setState({FINISH_NODE_ROW: row, FINISH_NODE_COL: col})
+        } else {
           const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
           this.setState({grid: newGrid});
         }
       }
+      // if (this.state.isStartNode) {
+      // this.setState({START_NODE_ROW:row, START_NODE_COL: col});
+      // } else if(this.state.isFinishNode) {
+      // this.setState({FINISH_NODE_ROW: row, FINISH_NODE_COL: col});
+      // }
     }
   }
 
@@ -193,11 +197,21 @@ export default class PathfindingVisualizer extends Component {
         const isFinishNode = !this.state.isFinishNode;
         this.setState({isFinishNode, FINISH_NODE_ROW: row, FINISH_NODE_COL: col});
       }
+      this.getInitialGrid()
     }
   }
 
+
   handleMouseLeave() {
-    this.setState({mouseIsPressed: false});
+    if (this.state.isStartNode) {
+      const isStartNode = !this.state.isStartNode;
+      this.setState({isStartNode,mouseIsPressed: false});
+    } else if (this.state.isFinishNode) {
+      const isFinishNode = !this.state.isFinishNode;
+      this.setState({isFinishNode,mouseIsPressed: false});
+    }
+    this.getInitialGrid()
+
   }
 
   /******************** Clear Board/Walls ********************/
@@ -207,23 +221,30 @@ export default class PathfindingVisualizer extends Component {
       const newGrid = this.state.grid.slice()
       for (const row of newGrid) {
         for (const node of row) {
-          let nodeClassName = document.getElementById(
-            `node-${node.row}-${node.col}`,
-          ).className;
+          let nodeClassName = document.getElementById(`node-${node.row}-${node.col}`).className;
           if (
             nodeClassName !== 'node node-start' &&
             nodeClassName !== 'node node-finish' &&
             nodeClassName !== 'node node-wall'
           ) {
-            document.getElementById(`node-${node.row}-${node.col}`).className =
-              'node';
+            document.getElementById(`node-${node.row}-${node.col}`).className = 'node';
             node.isVisited = false
             node.distance = Infinity
+            node.distanceToFinishNode = Math.abs(this.state.FINISH_NODE_ROW - node.row) + Math.abs(this.state.FINISH_NODE_COL - node.col)
           }
-          if (nodeClassName === 'node node-finish' ) {
+          if (nodeClassName === 'node node-finish' ){
             node.isVisited = false
             node.distance = Infinity
             node.distanceToFinishNode = 0
+          }
+          if (nodeClassName === 'node node-start') {
+            node.isVisited = false
+            node.distance = Infinity
+            node.distanceToFinishNode = Math.abs(this.state.FINISH_NODE_ROW - node.row) + Math.abs(this.state.FINISH_NODE_COL - node.col)
+            node.isStart = true
+            node.isWall=false
+            node.previousNode=null
+            node.isNode= true
           }
         }
       }
@@ -258,8 +279,6 @@ export default class PathfindingVisualizer extends Component {
       const {grid} = this.state;
       const startNode = grid[this.state.START_NODE_ROW][this.state.START_NODE_COL];
       const finishNode = grid[this.state.FINISH_NODE_ROW][this.state.FINISH_NODE_COL];
-      console.log('startNode >>>', startNode)
-      console.log('finishNode >>>', finishNode)
       let visitedNodesInOrder;
       switch (algo) {
         case 'Dijkstra':

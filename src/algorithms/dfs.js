@@ -6,13 +6,10 @@ export function dfs(grid, startNode, finishNode) {
   const visitedNodesInOrder = [];
   const nextNodesStack = [];
   nextNodesStack.push(startNode);
-  console.log('DFS >>> nextNodesStack', nextNodesStack);
   while (nextNodesStack.length) {
     const currentNode = nextNodesStack.pop();
-    console.log('DFS >>> currentNode', currentNode);
 
     if (currentNode === finishNode) {
-      console.log('DFS >>> in the if');
       return visitedNodesInOrder;
     }
 

@@ -1,10 +1,11 @@
 BUGS
 
+> [] handle mouse leaving while moving start/finish nodes
+> [x] move start and finish nodes
 > [x] move between algos
 > [x] multiple click an algo
 > [x] create delete walls
 > [x] clear grid
-> [x] move start and finish nodes
 > [x] same for mobile view
 > [x] fix bfs and dfs. should be able to run multiple times like Dijkstra's and A\* > [x] click each algo multiple times
 
