@@ -1,6 +1,6 @@
 BUGS
 
-> [] handle mouse leaving while moving start/finish nodes
+> [x] handle mouse leaving while moving start/finish nodes
 > [x] move start and finish nodes
 > [x] move between algos
 > [x] multiple click an algo
@@ -30,6 +30,7 @@ MVP
 
 Extra
 
+> [] make a graph rather than a matrix
 > [] color the current node different in animations
 > [] real time change origin/destination
 > [] set up a maze
