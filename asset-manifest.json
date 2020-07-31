@@ -1,26 +1,15 @@
 {
   "files": {
-    "main.css": "/sorting/static/css/main.ae8f0031.chunk.css",
-    "main.js": "/sorting/static/js/main.2c195093.chunk.js",
-    "main.js.map": "/sorting/static/js/main.2c195093.chunk.js.map",
-    "runtime-main.js": "/sorting/static/js/runtime-main.4fd55be2.js",
-    "runtime-main.js.map": "/sorting/static/js/runtime-main.4fd55be2.js.map",
-    "static/css/2.ea2fb89c.chunk.css": "/sorting/static/css/2.ea2fb89c.chunk.css",
-    "static/js/2.56d8078d.chunk.js": "/sorting/static/js/2.56d8078d.chunk.js",
-    "static/js/2.56d8078d.chunk.js.map": "/sorting/static/js/2.56d8078d.chunk.js.map",
-    "index.html": "/sorting/index.html",
-    "precache-manifest.8ba236b31185593879db630b5312cb45.js": "/sorting/precache-manifest.8ba236b31185593879db630b5312cb45.js",
-    "service-worker.js": "/sorting/service-worker.js",
-    "static/css/2.ea2fb89c.chunk.css.map": "/sorting/static/css/2.ea2fb89c.chunk.css.map",
-    "static/css/main.ae8f0031.chunk.css.map": "/sorting/static/css/main.ae8f0031.chunk.css.map",
-    "static/js/2.56d8078d.chunk.js.LICENSE.txt": "/sorting/static/js/2.56d8078d.chunk.js.LICENSE.txt",
-    "static/media/bootstrap.min.css": "/sorting/static/media/glyphicons-halflings-regular.fa277232.woff"
-  },
-  "entrypoints": [
-    "static/js/runtime-main.4fd55be2.js",
-    "static/css/2.ea2fb89c.chunk.css",
-    "static/js/2.56d8078d.chunk.js",
-    "static/css/main.ae8f0031.chunk.css",
-    "static/js/main.2c195093.chunk.js"
-  ]
+    "main.css": "/pathfind/static/css/main.627bbc01.chunk.css",
+    "main.js": "/pathfind/static/js/main.a240e63c.chunk.js",
+    "main.js.map": "/pathfind/static/js/main.a240e63c.chunk.js.map",
+    "runtime-main.js": "/pathfind/static/js/runtime-main.9c0b36d9.js",
+    "runtime-main.js.map": "/pathfind/static/js/runtime-main.9c0b36d9.js.map",
+    "static/js/2.9af78dfd.chunk.js": "/pathfind/static/js/2.9af78dfd.chunk.js",
+    "static/js/2.9af78dfd.chunk.js.map": "/pathfind/static/js/2.9af78dfd.chunk.js.map",
+    "index.html": "/pathfind/index.html",
+    "precache-manifest.35d82509773dff54de2054bbdb991b15.js": "/pathfind/precache-manifest.35d82509773dff54de2054bbdb991b15.js",
+    "service-worker.js": "/pathfind/service-worker.js",
+    "static/css/main.627bbc01.chunk.css.map": "/pathfind/static/css/main.627bbc01.chunk.css.map"
+  }
 }
