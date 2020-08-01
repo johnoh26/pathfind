@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://johnoh26.github.io/pathfinding",
+  "homepage": "http://johnoh26.github.io/pathfind",
   "dependencies": {
     "react": "^16.10.1",
     "react-dom": "^16.10.1",

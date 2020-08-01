@@ -24,6 +24,7 @@ export default class PathfindingVisualizer extends Component {
       isRunning: false,
       isStartNode: false,
       isFinishNode: false,
+      isWallNode: false, // xxxxxxx
       currRow: 0,
       currCol: 0,
       isDesktopView: true
@@ -122,7 +123,13 @@ export default class PathfindingVisualizer extends Component {
           });
         } else {
           const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
-          this.setState({grid: newGrid, mouseIsPressed: true});
+          this.setState({
+            grid: newGrid, 
+            mouseIsPressed: true, 
+            isWallNode: true, 
+            currRow: row, 
+            currCol: col
+          });
         }
       } else {
         this.clearGrid();
@@ -174,16 +181,11 @@ export default class PathfindingVisualizer extends Component {
             document.getElementById(`node-${row}-${col}`).className = 'node node-finish';
           }
           this.setState({FINISH_NODE_ROW: row, FINISH_NODE_COL: col})
-        } else {
+        } else if(this.state.isWallNode) {
           const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
           this.setState({grid: newGrid});
         }
       }
-      // if (this.state.isStartNode) {
-      // this.setState({START_NODE_ROW:row, START_NODE_COL: col});
-      // } else if(this.state.isFinishNode) {
-      // this.setState({FINISH_NODE_ROW: row, FINISH_NODE_COL: col});
-      // }
     }
   }
 
@@ -209,9 +211,11 @@ export default class PathfindingVisualizer extends Component {
     } else if (this.state.isFinishNode) {
       const isFinishNode = !this.state.isFinishNode;
       this.setState({isFinishNode,mouseIsPressed: false});
-    }
+    } else if (this.state.isWallNode) {
+      const isWallNode = !this.state.isWallNode;
+      this.setState({isWallNode, mouseIsPressed: false});
     this.getInitialGrid()
-
+    }
   }
 
   /******************** Clear Board/Walls ********************/
